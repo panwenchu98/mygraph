@@ -26,4 +26,5 @@ m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,3,6,2,4,1,5,4,7,4,5,7,3,6,7
 g=make_graph(t(m[,1:2]),directed=TRUE)
 graph_attr(g,"weight")=m[,3]
 sssp(g,1,7)
+
 }
