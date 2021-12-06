@@ -3,23 +3,22 @@
 #'@description
 #'This is a function for generating the single-source shortest-path for directed or undirected graph without negative edge weights
 #'
+#'@param g The igraph object of the graph
+#'@param startpoint Name of the vertex where the path starts
+#'@param endpoint Name of the vertex where the path ends
 #'
-#' @param g The igraph object of the graph
-#' @param startpoint Name of the vertex where the path starts
-#' @param endpoint Name of the vertex where the path ends
+#'@return A set of vertices names of the shortest path
 #'
+#'@examples
+#'library(igraph)
+#'library(mygraph)
+#'m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,3,6,2,4,1,5,4,7,4,5,7,3,6,7,5)+1,ncol=3,byrow=T)
+#'g=make_graph(t(m[,1:2]),directed=TRUE)
+#'graph_attr(g,"weight")=m[,3]
+#'sssp(g,1,7)
 #'
-#' @return A set of vertices names of the shortest path
-#' @export
+#'@export
 #'
-#' @examples
-#' library(igraph)
-#' library(mygraph)
-#' m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,3,6,2,4,1,5,4,7,4,5,7,3,6,7,5)+1,ncol=3,byrow=T)
-#' g=make_graph(t(m[,1:2]),directed=TRUE)
-#' graph_attr(g,"weight")=m[,3]
-#' sssp(g,1,7)
-
 
 
 
