@@ -1,18 +1,18 @@
 # mygraph
-
-## Overview
-* This package is another version of two graph problems, MST(minimun spanning tree) and SSSP(single-source shortest-path)
-* For MST, uses the Kruskal algoritm
-* For SSSP, uses Dijkstra algorithm for undirected graph, and Bellman-Ford algorithm for directed graph
-* You can learn more about them in *Tutorial.html* in vignette folder.
+=======
+## Overview  
+* This package is another version of two graph problems, MST(minimun spanning tree) and SSSP(single-source shortest-path)  
+  * For MST, uses the Kruskal algoritm  
+  * For SSSP, uses Dijkstra algorithm for undirected graph, and Bellman-Ford algorithm for directed graph  
+  * You can learn more about them in *Tutorial.html* in vignette folder.  
 ----
 
-## Backend
-* The improvement idea is from [here](https://www.ijcsmc.com/docs/papers/July2013/V2I7201338.pdf) but including some changes.
+## Backend  
+  * The improvement idea is from [here](https://www.ijcsmc.com/docs/papers/July2013/V2I7201338.pdf) but including some changes.  
 ----
 
-## installation
-* install.packages('Kmeansimp')
+## installation  
+  * install.packages('mygraph')  
 ----
 ## Usage
 ```{r}

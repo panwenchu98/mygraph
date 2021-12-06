@@ -4,11 +4,12 @@ Title: Graph Algorithms
 Version: 0.1.0
 Date: 2021-12-03
 Author: Wenchu Pan
-Maintainer: wenchu@umich.edu
+Maintainer: Wenchu Pan <wenchu@umich.edu>
 Description: This package is another version of two graph problems, MST(minimun spanning tree) and SSSP(single-source shortest-path)
     For MST, uses the Kruskal algoritm
     For SSSP, uses Dijkstra algorithm for undirected graph, and Bellman-Ford algorithm for directed graph
 License: GPL-3
+Imports: igraph
 RoxygenNote: 7.1.2
 Encoding: UTF-8
 LazyData: true
