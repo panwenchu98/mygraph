@@ -1,5 +1,6 @@
-# mygraph
-=======
+# mygraph  
+----
+
 ## Overview  
 * This package is another version of two graph problems, MST(minimun spanning tree) and SSSP(single-source shortest-path)  
   * For MST, uses the Kruskal algoritm  
