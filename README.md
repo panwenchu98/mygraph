@@ -1,7 +1,7 @@
 # mygraph  
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/panwenchu98/mygraph/actions/workflows/check-release.yaml/badge.svg)](https://github.com/panwenchu98/mygraph/actions/workflows/check-release.yaml)
-[![Codecov test coverage](https://codecov.io/gh/panwenchu98/mygraph/branch/main/graph/badge.svg)](https://app.codecov.io/gh/panwenchu98/mygraph?branch=main)
+[![test-coverage](https://github.com/panwenchu98/mygraph/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/panwenchu98/mygraph/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
 ----
 
