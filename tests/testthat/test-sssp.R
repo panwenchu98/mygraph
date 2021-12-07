@@ -1,7 +1,7 @@
 test_that("multiplication works", {
   #on small given graph(both directed and indirected)
   library(igraph)
-  m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,6,3,2,4,1,5,4,7,4,5,7,3,6,7,5)+1,ncol=3,byrow=T)
+  m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,6,3,2,4,1,5,4,7,4,5,7,3,6,7,5)+1,ncol=3,byrow=TRUE)
   g1=make_graph(t(m[,1:2]),directed=TRUE)
   graph_attr(g1,"weight")=m[,3]
   x1=sssp(g1,1,7)
