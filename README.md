@@ -1,4 +1,7 @@
 # mygraph  
+<!-- badges: start -->
+  [![Travis build status](https://travis-ci.com/panwenchu98/mygraph.svg?branch=main)](https://travis-ci.com/panwenchu98/mygraph)
+<!-- badges: end -->
 ----
 
 ## Overview  
