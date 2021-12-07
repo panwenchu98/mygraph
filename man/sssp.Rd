@@ -22,9 +22,11 @@ This is a function for generating the single-source shortest-path for directed o
 \examples{
 library(igraph)
 library(mygraph)
-m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,3,6,2,4,1,5,4,7,4,5,7,3,6,7,5)+1,ncol=3,byrow=T)
-g=make_graph(t(m[,1:2]),directed=TRUE)
-graph_attr(g,"weight")=m[,3]
-sssp(g,1,7)
-
+m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,6,3,2,4,1,5,4,7,4,5,7,3,6,7,5)+1,ncol=3,byrow=T)
+g1=make_graph(t(m[,1:2]),directed=TRUE)
+g2=make_graph(t(m[,1:2]),directed=FALSE)
+graph_attr(g1,"weight")=m[,3]
+graph_attr(g2,"weight")=m[,3]
+sssp(g1,1,7)
+sssp(g2,1,7)
 }

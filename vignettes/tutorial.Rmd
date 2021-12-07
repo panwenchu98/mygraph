@@ -1,0 +1,90 @@
+---
+title: "tutorial"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Theoretical Discription  
+    This package is another version of two graph problems, MST(minimun spanning tree) and SSSP(single-source shortest-path)  
+  * For MST, uses the Kruskal algoritm  
+  * For SSSP, uses Dijkstra algorithm for undirected graph, and Bellman-Ford algorithm for directed graph   
+  
+  
+### Usage
+    This package includes two functions, mstree and sssp  
+    For mstree, there is only one parameter `g` which is the graph used to generate MST. The output is the MST of g, in the form of a subgraph of g.  
+    For sssp, there are three parameters `g` `startpoint` and `endpoint`, representing the graph, start of the path and end of the path. The output is the set of vertices on the shortest path.  
+    
+### Import Package
+```{r setup}
+library(mygraph)
+```
+
+### Run Function on small sample
+```{r}
+library(igraph)
+m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,6,3,2,4,1,5,4,7,4,5,7,3,6,7,5)+1,ncol=3,byrow=T)
+g=make_graph(t(m[,1:2]),directed=TRUE)
+graph_attr(g,"weight")=m[,3]
+#plot(g,edge.label=graph_attr(g,"weight"))
+sssp(g,1,7)
+mstree(g)
+```
+
+### Compare with outcomes of package "igraph"
+```{r}
+st=shortest_paths(g,from=1,to=7,weights=graph_attr(g,"weight"))
+!(FALSE %in% (sssp(g,1,7)==st$vpath[[1]]))
+
+tree=mst(g,weights=graph_attr(g,"weight"))
+m1=get.edgelist(mstree(g)); m1=matrix(as.numeric(m1),ncol=2)
+m1=m1[order(m1[,2]),]; m1=m1[order(m1[,1]),]
+m2=get.edgelist(tree); m2=m2[order(m2[,2]),]; m2=m2[order(m2[,1]),]
+!(FALSE %in% (m1==m2))
+```
+
+### Compare correctness and efficiency of the package and igraph package
+This package is a bit slower than igraph packages, but not much
+```{r}
+nvert=100   #number of vertices
+nedge=500  #number of edges
+m=matrix(0,nrow=nedge,ncol=3)
+set.seed(1234)
+m[,1]=as.integer(runif(nedge,min=1,max=nvert+0.99))
+m[,2]=as.integer(runif(nedge,min=1,max=nvert+0.99))
+m[,3]=abs(rnorm(nedge))+1
+nvert=max(m[,1:2])
+
+#testing in directed graph
+g1=make_graph(t(m[,1:2]),directed=TRUE)
+graph_attr(g1,"weight")=m[,3]
+!(FALSE %in% (sssp(g1,1,nvert)==shortest_paths(g1,from=1,to=nvert,weights=graph_attr(g1,"weight"))$vpath[[1]]))
+system.time(sssp(g1,1,nvert))
+system.time(shortest_paths(g1,from=1,to=nvert,weights=graph_attr(g1,"weight")))
+
+#testing in undirected graph
+g2=make_graph(t(m[,1:2]),directed=FALSE)
+graph_attr(g2,"weight")=m[,3]
+!(FALSE %in% (sssp(g2,1,nvert)==shortest_paths(g2,from=1,to=nvert,weights=graph_attr(g1,"weight"))$vpath[[1]]))
+system.time(sssp(g2,1,nvert))
+system.time(shortest_paths(g2,from=1,to=nvert,weights=graph_attr(g2,"weight")))
+
+#testing MST
+tree=mst(g1,weights=graph_attr(g1,"weight"))
+m1=get.edgelist(mstree(g1)); m1=matrix(as.numeric(m1),ncol=2)
+m1=m1[order(m1[,2]),]; m1=m1[order(m1[,1]),]
+m2=get.edgelist(tree); m2=m2[order(m2[,2]),]; m2=m2[order(m2[,1]),]
+!(FALSE %in% (m1==m2))
+system.time(mstree(g1))
+system.time(mst(g1,weights=graph_attr(g1,"weight")))
+```
