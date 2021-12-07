@@ -1,6 +1,7 @@
 # mygraph  
 <!-- badges: start -->
   [![Travis build status](https://travis-ci.com/panwenchu98/mygraph.svg?branch=main)](https://travis-ci.com/panwenchu98/mygraph)
+[![Codecov test coverage](https://codecov.io/gh/panwenchu98/mygraph/branch/main/graph/badge.svg)](https://app.codecov.io/gh/panwenchu98/mygraph?branch=main)
 <!-- badges: end -->
 ----
 
