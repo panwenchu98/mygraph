@@ -30,10 +30,10 @@ sssp=function(g,startpoint,endpoint){#single-source shortest-path
   v=length(vectornames)
   dict=1:v
   names(dict)=vectornames
-  m=matrix(dict[m],ncol=2)     #change the names of vertices to 1:v
+  m=matrix(dict[as.character(m)],ncol=2)     #change the names of vertices to 1:v
   m=cbind(m,graph_attr(g,"weight"))
-  st=dict[startpoint]
-  en=dict[endpoint]
+  st=dict[as.character(startpoint)]
+  en=dict[as.character(endpoint)]
 
 
   if (!is_directed(g)){#if not directed, use Dijkstra as it runs faster
@@ -86,13 +86,7 @@ sssp=function(g,startpoint,endpoint){#single-source shortest-path
     paths=c(temp,paths)
   }
   names(vectornames)=1:v
-  return(vectornames[paths])
+  ans=vectornames[paths]
+  names(ans)=c()
+  return(ans)
 }
-
-
-#library(igraph)
-#m=matrix(c(0,1,5,0,2,4,0,3,3,1,5,3,1,4,5,2,5,3,2,6,2,3,6,2,4,1,5,4,7,4,5,7,3,6,7,5)+1,ncol=3,byrow=T)
-#g=make_graph(t(m[,1:2]),directed=TRUE)
-#graph_attr(g,"weight")=m[,3]
-#st=shortest_paths(g,from=1,to=7,weights=graph_attr(g,"weight"))
-#sssp(g,1,7)==st$vpath[[1]]
